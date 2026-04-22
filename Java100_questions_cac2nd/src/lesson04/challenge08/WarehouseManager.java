@@ -54,12 +54,44 @@ public class WarehouseManager {
 		int[] ABKosanArray1 = new int[5];
 		int[] ABKosanArray2 = new int[5];
 
+		int intputNum = 0;
+		boolean loopFlag = false;
 
-		//ここに重複チェックおよび値の代入処理を記述する①(1～5)
+		for (int i = 0; i < ABKosanArray1.length; i++) {
 
+			do {
+				loopFlag = false;
+				intputNum = (int) (Math.random() * 5) + 1;
 
-		//ここに重複チェックおよび値の代入処理を記述する②(6～10)
+				for (int j = 0; j < ABKosanArray1.length; j++) {
 
+					if (intputNum == ABKosanArray1[j]) {
+						loopFlag = true;
+						break;
+					}
+				}
+			} while (loopFlag);
+
+			ABKosanArray1[i] = intputNum;
+		}
+
+		for (int i = 0; i < ABKosanArray2.length; i++) {
+
+			do {
+				loopFlag = false;
+				intputNum = (int) (Math.random() * 5) + 6;
+
+				for (int j = 0; j < ABKosanArray2.length; j++) {
+
+					if (intputNum == ABKosanArray2[j]) {
+						loopFlag = true;
+						break;
+					}
+				}
+			} while (loopFlag);
+
+			ABKosanArray2[i] = intputNum;
+		}
 
 		System.out.println("E主任：");
 		System.out.println("AB興産から新たに預かった荷物と以前から預かっている荷物の");
@@ -88,11 +120,27 @@ public class WarehouseManager {
 		System.out.println("E主任：");
 		System.out.println("その二つの荷物を奇数群、偶数群で入れ替えてください。\n");
 
-
-
-		//ここに奇数群(ABKosanArray1)と偶数群(ABKosanArray2)に振り分ける処理を記述する。
-
-
+		int numberG = 0;
+		int numberK = 0;
+		int change = 0;
+		do {
+			for (int i = numberG; i < ABKosanArray1.length; i++) {
+				if (ABKosanArray1[i] % 2 == 0) {
+					numberG = i;
+					break;
+				}
+			}
+			for (int i = numberK; i < ABKosanArray2.length; i++) {
+				if (ABKosanArray2[i] % 2 != 0) {
+					int temp = ABKosanArray1[numberG];
+					ABKosanArray1[numberG] = ABKosanArray2[i];
+					ABKosanArray2[i] = temp;
+					numberK = i;
+					change++;
+					break;
+				}
+			}
+		} while (change < 2);
 
 		System.out.println("Yさん：");
 		System.out.println("はい、入れ替えました。");
