@@ -83,9 +83,21 @@ public class WarehouseManager {
 
 		System.out.println("\n\nでした。直してきます...\n");
 
+		int empty = 0;
 
-		//for文のネストを利用してMQArrayAの要素0の位置にMQArrayBの値を入れる処理を記述する。
-
+		for (int i = 0; i < MQArrayA.length; i++) {
+			for (int j = 0; j < MQArrayB.length; j++) {
+				if (MQArrayA[i] == 0) {
+					empty = i;
+					break;
+				} else if (MQArrayB[j] != 0) {
+					int temp = MQArrayA[empty];
+					MQArrayA[empty] = MQArrayB[j];
+					MQArrayB[j] = temp;
+					break;
+				}
+			}
+		}
 
 		System.out.println("Yさん：");
 		System.out.println("直してきました。\n");

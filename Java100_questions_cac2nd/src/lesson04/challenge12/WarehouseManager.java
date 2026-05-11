@@ -99,9 +99,17 @@ public class WarehouseManager {
 
 		System.out.println("\n\nでした。直してきます...\n");
 
+		int Num = 0;
+		int total = 0;
+		for (int i = 0; i < wonderfulArray.length; i++) {
+			if (wonderfulArray[i] == 0) {
+				Num = i;
+			} else {
+				total += wonderfulArray[i];
+			}
+		}
 
-		//ここに適切な値の挿入処理を記述する
-
+		wonderfulArray[Num] = (15 - total);
 
 		System.out.println("Yさん：");
 		System.out.println("直してきました。\n");
